@@ -1,41 +1,10 @@
 import React from 'react';
-import styled from 'styled-components';
 import { TimeType } from '../types';
-
-const Wrapper = styled.div`
-  display: flex;
-  justify-content: space-between;
-  width: 230px;
-  margin-top: 20px;
-  margin-left: 20px;
-  padding: 20px;
-  border: 3px solid black;
-  border-radius: 10px;
-`;
-
-const StyledDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 33%;
-  p {
-    font-size: 18px;
-    margin: 0;
-    margin-bottom: 10px;
-  }
-
-  input {
-    font-size: 25px;
-    text-align: center;
-    width: 70%;
-    height: 30px;
-  }
-`;
+import { TimerInputWrapper, TimerInputDiv } from './TimerInput.style';
 
 type PropsType = {
   time: TimeType;
-  onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
-  onBlur: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  setTime: React.Dispatch<React.SetStateAction<TimeType>>;
 };
 
 const arr = [
@@ -44,11 +13,44 @@ const arr = [
   ['초', 'second']
 ];
 
-const TimerInput: React.FC<PropsType> = ({ time, onChange, onBlur }) => {
+const TimerInput: React.FC<PropsType> = ({ time, setTime }) => {
+  const onChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    const obj = { ...time, [name]: value };
+    setTime(obj);
+  };
+
+  const onBlur = (e: React.ChangeEvent<HTMLInputElement>) => {
+    let flag = false;
+    const { name } = e.target;
+
+    if (time[name] !== '' && !time[name].match(/^[0-9]+$/g)) {
+      flag = true;
+      alert('숫자만 입력하세요');
+    }
+
+    if (name === 'hour' && parseInt(time[name]) > 99) {
+      flag = true;
+      alert('시간은 99 이하만 입력할 수 있습니다');
+    }
+
+    if (name !== 'hour' && parseInt(time[name]) > 60) {
+      flag = true;
+      alert(
+        `${name === 'minute' ? '분은' : '초는'} 60 이하만 입력할 수 있습니다`
+      );
+    }
+
+    if (flag) {
+      const obj = { ...time, [name]: '' };
+      setTime(obj);
+    }
+  };
+
   return (
-    <Wrapper>
+    <TimerInputWrapper>
       {arr.map(value => (
-        <StyledDiv>
+        <TimerInputDiv>
           <p>{value[0]}</p>
           <input
             name={value[1]}
@@ -57,9 +59,9 @@ const TimerInput: React.FC<PropsType> = ({ time, onChange, onBlur }) => {
             onChange={onChange}
             onBlur={onBlur}
           />
-        </StyledDiv>
+        </TimerInputDiv>
       ))}
-    </Wrapper>
+    </TimerInputWrapper>
   );
 };
 
