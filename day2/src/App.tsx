@@ -15,7 +15,7 @@ function App() {
   return (
     <div className='App'>
       {running ? (
-        <TimerDisplay time={time} />
+        <TimerDisplay time={time} setTime={setTime} />
       ) : (
         <TimerInput time={time} setTime={setTime} />
       )}
