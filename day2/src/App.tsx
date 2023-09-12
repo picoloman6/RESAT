@@ -15,11 +15,11 @@ function App() {
   return (
     <div className='App'>
       {running ? (
-        <TimerDisplay time={time} setTime={setTime} />
+        <TimerDisplay time={time} setTime={setTime} setRunning={setRunning} />
       ) : (
         <TimerInput time={time} setTime={setTime} />
       )}
-      <TimerButton time={time} setRunning={setRunning} />
+      <TimerButton time={time} setTime={setTime} setRunning={setRunning} />
     </div>
   );
 }
