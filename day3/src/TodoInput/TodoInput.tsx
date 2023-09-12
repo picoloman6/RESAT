@@ -8,13 +8,11 @@ interface PropsType {
 
 const TodoInput: React.FC<PropsType> = ({ form, setForm }) => {
   const onChangeSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
-    const obj = { ...form, importance: e.target.value };
-    setForm(obj);
+    setForm({ ...form, importance: e.target.value });
   };
 
   const onChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
-    const obj = { ...form, text: e.target.value };
-    setForm(obj);
+    setForm({ ...form, text: e.target.value });
   };
 
   const onClickButton = () => {
@@ -24,11 +22,9 @@ const TodoInput: React.FC<PropsType> = ({ form, setForm }) => {
       alert('글자를 입력하세요!');
       return;
     }
-
-    const newList = [...list, [text, importance]];
-    const obj = { text: '', importance: 'low', list: newList };
-    setForm(obj);
-    console.log(form);
+    const obj = { id: list.length + 1, text, importance, checked: false };
+    const newList = [...list, obj];
+    setForm({ text: '', importance: 'low', list: newList });
   };
 
   return (
