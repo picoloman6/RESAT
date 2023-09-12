@@ -1,9 +1,11 @@
 import { useState } from 'react';
+import { TimeType } from './types';
 import TimerInput from './TimerInput/TimerInput';
 import TimerButton from './TimerButton/TimerButton';
-import { TimeType } from './types';
+import TimerDisplay from './TimerDisplay/TimerDisplay';
 
 function App() {
+  const [running, setRunning] = useState<boolean>(false);
   const [time, setTime] = useState<TimeType>({
     hour: '',
     minute: '',
@@ -12,8 +14,12 @@ function App() {
 
   return (
     <div className='App'>
-      <TimerInput time={time} setTime={setTime} />
-      <TimerButton time={time} setTime={setTime} />
+      {running ? (
+        <TimerDisplay time={time} />
+      ) : (
+        <TimerInput time={time} setTime={setTime} />
+      )}
+      <TimerButton time={time} setRunning={setRunning} />
     </div>
   );
 }

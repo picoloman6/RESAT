@@ -4,6 +4,7 @@ export const TimerInputWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   width: 230px;
+  height: 80px;
   margin-top: 20px;
   margin-left: 20px;
   padding: 20px;
