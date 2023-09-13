@@ -11,7 +11,7 @@ interface PropsType {
 const TodoList: React.FC<PropsType> = ({ form, setForm, contents }) => {
   const { id, text, importance, checked } = contents;
 
-  const onClickCheckbox = () => {
+  const onChangeCheckbox = () => {
     const obj = form.list.filter(value => value.id === id)[0];
     obj.checked = !obj.checked;
     const list = [...form.list].map(value => (value.id === id ? obj : value));
@@ -21,7 +21,7 @@ const TodoList: React.FC<PropsType> = ({ form, setForm, contents }) => {
 
   return (
     <TodoListWrapper>
-      <input type='checkbox' checked={checked} onChange={onClickCheckbox} />
+      <input type='checkbox' checked={checked} onChange={onChangeCheckbox} />
       <span>{text}</span>
       <div>{importance}</div>
     </TodoListWrapper>
