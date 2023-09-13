@@ -14,7 +14,9 @@ const Todo = () => {
     <div>
       <TodoInput form={form} setForm={setForm} />
       {form.list &&
-        form.list.map((value, idx) => <TodoList key={idx} contents={value} />)}
+        form.list.map((value, idx) => (
+          <TodoList key={idx} form={form} setForm={setForm} contents={value} />
+        ))}
     </div>
   );
 };

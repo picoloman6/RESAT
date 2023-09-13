@@ -6,7 +6,6 @@ export interface ListType {
 }
 
 export interface FormType {
-  [key: string]: string | Array<ListType> | [];
   text: string;
   importance: string;
   list: Array<ListType> | [];
