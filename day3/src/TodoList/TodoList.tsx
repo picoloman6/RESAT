@@ -6,9 +6,15 @@ interface PropsType {
   form: FormType;
   setForm: React.Dispatch<React.SetStateAction<FormType>>;
   contents: ListType;
+  setModify: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const TodoList: React.FC<PropsType> = ({ form, setForm, contents }) => {
+const TodoList: React.FC<PropsType> = ({
+  form,
+  setForm,
+  contents,
+  setModify
+}) => {
   const { id, text, importance, checked } = contents;
 
   const onChangeCheckbox = () => {
@@ -19,10 +25,16 @@ const TodoList: React.FC<PropsType> = ({ form, setForm, contents }) => {
     setForm(newForm);
   };
 
+  const onClickText = () => {
+    setModify(id);
+    const newForm = { ...form, text, importance };
+    setForm(newForm);
+  };
+
   return (
     <TodoListWrapper>
       <input type='checkbox' checked={checked} onChange={onChangeCheckbox} />
-      <span>{text}</span>
+      <span onClick={onClickText}>{text}</span>
       <div>{importance}</div>
     </TodoListWrapper>
   );

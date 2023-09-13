@@ -1,19 +1,23 @@
 import React from 'react';
+import { FormType, ListType } from '../Types';
 import { TodoFilterWrapper } from './TodoFilter.style';
 
 interface PropsType {
-  setFilter: React.Dispatch<React.SetStateAction<string>>;
+  form: FormType;
+  setList: React.Dispatch<React.SetStateAction<Array<ListType> | []>>;
 }
 
-const Todofilter: React.FC<PropsType> = ({ setFilter }) => {
+const Todofilter: React.FC<PropsType> = ({ form, setList }) => {
   const onClick = (e: React.MouseEvent<HTMLElement>) => {
     const element = e.target as HTMLButtonElement;
     if (element.className === 'all') {
-      setFilter('all');
+      setList(form.list);
     } else if (element.className === 'done') {
-      setFilter('done');
+      const newList = form.list.filter(value => value.checked === true);
+      setList(newList);
     } else if (element.className === 'progress') {
-      setFilter('progress');
+      const newList = form.list.filter(value => value.checked === false);
+      setList(newList);
     }
   };
 
