@@ -1,5 +1,6 @@
 import React from 'react';
 import { ListType } from '../Types';
+import { TodoListWrapper } from './TodoList.style';
 
 interface PropsType {
   contents: ListType;
@@ -8,11 +9,11 @@ interface PropsType {
 const TodoList: React.FC<PropsType> = ({ contents }) => {
   const { id, text, importance, checked } = contents;
   return (
-    <div>
+    <TodoListWrapper>
       <input type='checkbox' checked={checked} />
       <span>{text}</span>
-      <span>{importance}</span>
-    </div>
+      <div>{importance}</div>
+    </TodoListWrapper>
   );
 };
 

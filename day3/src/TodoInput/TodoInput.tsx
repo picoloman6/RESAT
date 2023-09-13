@@ -24,23 +24,23 @@ const TodoInput: React.FC<PropsType> = ({ form, setForm }) => {
     }
     const obj = { id: list.length + 1, text, importance, checked: false };
     const newList = [...list, obj];
-    setForm({ text: '', importance: 'low', list: newList });
+    setForm({ text: '', importance: '낮음', list: newList });
   };
 
   return (
     <TodoInputWrapper>
       <input onChange={onChangeInput} value={form.text} />
-      <select onChange={onChangeSelect}>
-        <option key='low' value='low'>
+      <select onChange={onChangeSelect} value={form.importance}>
+        <option key='low' value='낮음'>
           낮음
         </option>
-        <option key='middle' value='middle'>
+        <option key='middle' value='보통'>
           보통
         </option>
-        <option key='high' value='high'>
+        <option key='high' value='높음'>
           높음
         </option>
-        <option key='higher' value='higher'>
+        <option key='higher' value='아주 높음'>
           아주 높음
         </option>
       </select>

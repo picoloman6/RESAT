@@ -6,7 +6,7 @@ import TodoList from '../TodoList/TodoList';
 const Todo = () => {
   const [form, setForm] = useState<FormType>({
     text: '',
-    importance: 'low',
+    importance: '낮음',
     list: []
   });
 
