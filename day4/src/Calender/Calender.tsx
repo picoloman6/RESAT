@@ -1,12 +1,13 @@
 import CalenderHeader from '../CalenderHeader/CalenderHeader';
 import CalenderBody from '../CalenderBody/CalenderBody';
+import { CalenderWrapper } from './Calender.style';
 
 const Calender = () => {
   return (
-    <div>
+    <CalenderWrapper>
       <CalenderHeader />
       <CalenderBody />
-    </div>
+    </CalenderWrapper>
   );
 };
 
