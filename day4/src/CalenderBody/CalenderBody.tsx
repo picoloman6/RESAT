@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
+import { MemosType } from '../types';
 import { makeMonth } from '../utils';
 import {
   StyledWeek,
@@ -14,25 +15,32 @@ interface DatePropsType {
 
 interface BodyPropsType {
   standardDate: Date;
+  memos: MemosType;
+  setMemos: React.Dispatch<React.SetStateAction<MemosType>>;
 }
 
 const CalenderDate: React.FC<DatePropsType> = ({ week, size }) => {
-  const onClick = () => {
-    console.log('여기');
+  const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
+    const element = e.target as HTMLTextAreaElement;
+    if (element.innerText !== '') {
+      console.log(element.innerText);
+    }
   };
 
   return (
-    <StyledWeek size={size}>
+    <StyledWeek onClick={onClick} size={size}>
       {week.map((date, i) => (
-        <StyledDate onClick={onClick} key={i}>
-          {date === 0 ? '' : date}
-        </StyledDate>
+        <StyledDate key={i}>{date === 0 ? '' : date}</StyledDate>
       ))}
     </StyledWeek>
   );
 };
 
-const CalenderBody: React.FC<BodyPropsType> = ({ standardDate }) => {
+const CalenderBody: React.FC<BodyPropsType> = ({
+  standardDate,
+  memos,
+  setMemos
+}) => {
   const [month, setMonth] = useState<number[][] | null>(null);
 
   useEffect(() => {

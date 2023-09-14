@@ -20,7 +20,7 @@ export const CalenderHeaderWrapper = styled.div`
   > div {
     display: flex;
     justify-content: space-between;
-    width: 30%;
+    width: 28%;
 
     > span {
       font-size: 25px;
