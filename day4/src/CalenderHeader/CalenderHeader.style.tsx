@@ -16,4 +16,14 @@ export const CalenderHeaderWrapper = styled.div`
     font-size: 50px;
     cursor: pointer;
   }
+
+  > div {
+    display: flex;
+    justify-content: space-between;
+    width: 30%;
+
+    > span {
+      font-size: 25px;
+    }
+  }
 `;
