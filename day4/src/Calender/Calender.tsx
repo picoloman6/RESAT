@@ -20,10 +20,16 @@ const Calender = () => {
       <CalenderBody
         standardDate={standardDate}
         memos={memos}
-        setMemos={setMemos}
         setModal={setModal}
       />
-      {modal.open && <CalenderModal modal={modal} setModal={setModal} />}
+      {modal.open && (
+        <CalenderModal
+          memos={memos}
+          setMemos={setMemos}
+          modal={modal}
+          setModal={setModal}
+        />
+      )}
     </CalenderWrapper>
   );
 };
