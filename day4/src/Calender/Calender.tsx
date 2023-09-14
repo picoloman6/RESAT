@@ -5,14 +5,14 @@ import CalenderBody from '../CalenderBody/CalenderBody';
 import { CalenderWrapper } from './Calender.style';
 
 const Calender = () => {
-  const [standarDate, setStandardDate] = useState<Date>(new Date());
+  const [standardDate, setStandardDate] = useState<Date>(new Date());
   return (
     <CalenderWrapper>
       <CalenderHeader
-        standarDate={standarDate}
+        standardDate={standardDate}
         setStandardDate={setStandardDate}
       />
-      <CalenderBody standarDate={standarDate} />
+      <CalenderBody standardDate={standardDate} />
     </CalenderWrapper>
   );
 };

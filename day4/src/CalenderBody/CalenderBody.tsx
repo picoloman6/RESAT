@@ -1,37 +1,52 @@
-import React, { useRef, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 
-interface PropsType {
-  standarDate: Date;
+import { makeMonth } from '../utils';
+import {
+  StyledWeek,
+  StyledDate,
+  CalenderBodyWrapper
+} from './CalenderBody.style';
+
+interface DatePropsType {
+  week: number[];
+  size: number;
 }
 
-const CalenderBody: React.FC<PropsType> = ({ standarDate }) => {
-  const dates = useRef<number[][]>([]);
+interface BodyPropsType {
+  standardDate: Date;
+}
+
+const CalenderDate: React.FC<DatePropsType> = ({ week, size }) => {
+  const onClick = () => {
+    console.log('여기');
+  };
+
+  return (
+    <StyledWeek size={size}>
+      {week.map((date, i) => (
+        <StyledDate onClick={onClick} key={i}>
+          {date === 0 ? '' : date}
+        </StyledDate>
+      ))}
+    </StyledWeek>
+  );
+};
+
+const CalenderBody: React.FC<BodyPropsType> = ({ standardDate }) => {
+  const [month, setMonth] = useState<number[][] | null>(null);
 
   useEffect(() => {
-    const arr1 = [];
-    let arr = Array(7).fill(0);
-    const newDate = new Date(standarDate);
-    newDate.setDate(1);
-    while (standarDate.getMonth() === newDate.getMonth()) {
-      const idx = newDate.getDay();
-      const date = newDate.getDate();
-      arr[idx] = date;
-      if (idx === 6) {
-        arr1.push(arr);
-        arr = Array(7).fill(0);
-      }
-      newDate.setDate(newDate.getDate() + 1);
-    }
-    if (arr.join('').match(/[1-9]/g)) {
-      console.log(arr.join(''));
-      arr1.push(arr);
-    }
+    setMonth(makeMonth(standardDate));
+  }, [standardDate]);
 
-    dates.current = [...arr1];
-    console.log(dates.current);
-  }, [standarDate]);
-
-  return <div>캘린더 바디</div>;
+  return (
+    <CalenderBodyWrapper>
+      {month &&
+        month.map((week, i) => (
+          <CalenderDate key={i} week={week} size={month.length} />
+        ))}
+    </CalenderBodyWrapper>
+  );
 };
 
 export default CalenderBody;
