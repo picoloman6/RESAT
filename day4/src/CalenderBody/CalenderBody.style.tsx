@@ -8,15 +8,16 @@ export const StyledWeek = styled.div<{ size: number }>`
   border-bottom: 1px solid #e2e2e2;
 `;
 
-export const StyledDate = styled.div`
+export const StyledDate = styled.div<{ checked: boolean }>`
   display: flex;
   justify-content: center;
   align-items: center;
-  display: flex;
+  background: ${props => (props.checked ? 'white' : '#4B89DC')};
+  font-weight: ${props => (props.checked ? '400' : '600')};
   width: 14.28%;
   height: 100%;
   font-size: 18px;
-  border-right: 1px solid #e2e2e2;
+  border-right: 1px solid ${props => (props.checked ? '#e2e2e2' : '#4B89DC')};
   cursor: pointer;
 `;
 

@@ -29,8 +29,6 @@ const CalenderDate: React.FC<DatePropsType> = ({
   memos,
   setModal
 }) => {
-  const [checked, setChecked] = useState<boolean>(false);
-
   const onClick = (e: React.MouseEvent<HTMLDivElement>) => {
     const element = e.target as HTMLTextAreaElement;
     if (element.innerText !== '') {
@@ -44,9 +42,16 @@ const CalenderDate: React.FC<DatePropsType> = ({
 
   return (
     <StyledWeek onClick={onClick} size={size}>
-      {week.map((date, i) => (
-        <StyledDate key={i}>{date === 0 ? '' : date}</StyledDate>
-      ))}
+      {week.map((date, i) => {
+        const target = `${standardDate.getFullYear()}${String(
+          standardDate.getMonth() + 1
+        ).padStart(2, '0')}${String(date).padStart(2, '0')}`;
+        return (
+          <StyledDate key={i} checked={memos[target] === undefined}>
+            {date === 0 ? '' : date}
+          </StyledDate>
+        );
+      })}
     </StyledWeek>
   );
 };
