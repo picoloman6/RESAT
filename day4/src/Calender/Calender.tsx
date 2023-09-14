@@ -12,7 +12,7 @@ const Calender = () => {
         standarDate={standarDate}
         setStandardDate={setStandardDate}
       />
-      <CalenderBody />
+      <CalenderBody standarDate={standarDate} />
     </CalenderWrapper>
   );
 };
