@@ -4,9 +4,16 @@ export const MainHeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  width: 100%;
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: inherit;
+  min-width: 780px;
+
   height: 50px;
   border-bottom: 1px solid #e9e9e9;
+  background: white;
 
   > :first-child {
     width: 10%;
