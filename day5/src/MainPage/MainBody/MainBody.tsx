@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import { MainBodyWrapper, ItemComponentWrapper } from './MainBody.style';
 
@@ -31,10 +31,6 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
 };
 
 const MainBody: React.FC<MainPropsType> = ({ data }) => {
-  useEffect(() => {
-    console.log(data);
-  }, [data]);
-
   return (
     <MainBodyWrapper>
       {data.length !== 0 &&

@@ -1,4 +1,4 @@
-import { useState, useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import axios from 'axios';
 
 import MainHeader from './MainHeader/MainHeader';
@@ -8,12 +8,21 @@ import MainBody from './MainBody/MainBody';
 import { MainPageWrapper } from './MainPage.style';
 
 const MainPage = () => {
-  const page = useRef<number>(1);
+  const [page, setPage] = useState<number>(1);
+  const [isFetching, setIsFetching] = useState<boolean>(false);
   const [scrollpos, setScrollpos] = useState<number>(0);
   const [data, setData] = useState<object[]>([]);
 
   const updateScroll = () => {
     setScrollpos(window.scrollY);
+  };
+
+  const handleScroll = () => {
+    const { scrollTop, offsetHeight } = document.documentElement;
+    if (window.innerHeight + scrollTop >= offsetHeight) {
+      setPage(page + 1);
+      setIsFetching(true);
+    }
   };
 
   const getData = useCallback(async () => {
@@ -27,15 +36,24 @@ const MainPage = () => {
     } catch (e) {
       console.log(e);
     }
-  }, [data]);
+  }, [data, page]);
 
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
+    window.addEventListener('scroll', handleScroll);
     getData();
     return () => {
       window.removeEventListener('scroll', updateScroll);
+      window.removeEventListener('scroll', handleScroll);
     };
   }, []);
+
+  useEffect(() => {
+    if (isFetching) {
+      getData();
+      setIsFetching(false);
+    }
+  }, [isFetching]);
 
   return (
     <MainPageWrapper>
