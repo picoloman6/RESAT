@@ -7,10 +7,10 @@ import MainBody from './MainBody/MainBody';
 import { MainPageWrapper } from './MainPage.style';
 
 const MainPage = () => {
-  const [scrollPos, setScrollPos] = useState<number>(0);
+  const [scrollpos, setScrollpos] = useState<number>(0);
 
   const updateScroll = () => {
-    setScrollPos(window.scrollY);
+    setScrollpos(window.scrollY);
   };
 
   useEffect(() => {
@@ -24,7 +24,7 @@ const MainPage = () => {
     <MainPageWrapper>
       <MainHeader />
       <Slide />
-      <MiddleBar scrollPos={scrollPos} />
+      <MiddleBar scrollpos={scrollpos} />
       <MainBody />
     </MainPageWrapper>
   );
