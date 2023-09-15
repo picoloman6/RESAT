@@ -3,7 +3,8 @@ import styled from 'styled-components';
 export const MainBodyWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: space-between;
+  justify-content: flex-start;
+  gap: 20px;
   margin: 0 auto;
   width: 95%;
 `;
@@ -48,8 +49,10 @@ export const ItemComponentWrapper = styled.div`
     }
 
     > div:last-child {
+      height: 43px;
       font-size: 13px;
       margin: 5px 10px 0px 10px;
+      overflow: hidden;
     }
   }
 `;

@@ -1,47 +1,44 @@
+import React, { useEffect } from 'react';
+
 import { MainBodyWrapper, ItemComponentWrapper } from './MainBody.style';
 
-const ItemComponent = () => {
+interface ItemProps {
+  item: {
+    name?: string;
+    text?: string;
+  };
+}
+
+interface MainPropsType {
+  data: object[];
+}
+
+const ItemComponent: React.FC<ItemProps> = ({ item }) => {
   return (
     <ItemComponentWrapper>
       <div></div>
       <div>
         <div>
           <span>D-1</span>
-          <span>카테고리</span>
+          <span>{item.name}</span>
         </div>
-        <div>내용이 잔뜩 들어 있습니다.</div>
+        <div>
+          <span>{item.text}</span>
+        </div>
       </div>
     </ItemComponentWrapper>
   );
 };
 
-const MainBody = () => {
+const MainBody: React.FC<MainPropsType> = ({ data }) => {
+  useEffect(() => {
+    console.log(data);
+  }, [data]);
+
   return (
     <MainBodyWrapper>
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
-      <ItemComponent />
+      {data.length !== 0 &&
+        data.map((item, i) => <ItemComponent key={i} item={item} />)}
     </MainBodyWrapper>
   );
 };
