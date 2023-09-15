@@ -5,12 +5,12 @@ export const MiddleBarWrapper = styled.div<{ scrollpos: number }>`
   justify-content: space-between;
   align-items: center;
   position: sticky;
-  top: 50px;
+  top: 51px;
   width: 100%;
   height: 60px;
   box-shadow: ${props =>
-    props.scrollpos > 290 ? '0 8px 8px -4px gray' : 'none'};
-
+    props.scrollpos > 290 ? '0 8px 8px -6px gray' : 'none'};
+  background: white;
   > div:first-child {
     display: flex;
     width: 250px;
