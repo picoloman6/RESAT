@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const SlideWrapper = styled.div<{ photo: string }>`
+export const SlideWrapper = styled.div<{ $photo?: string }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -8,8 +8,10 @@ export const SlideWrapper = styled.div<{ photo: string }>`
   height: 300px;
   margin-top: 50px;
   border-bottom: 1px solid rgba(160, 160, 160);
-  background-image: url(${props => props.photo});
-  background-size: 100% 100%;
+  background-image: url(${props => props.$photo});
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
 
   > div {
     display: flex;

@@ -12,17 +12,35 @@ const Slide = () => {
     setPhotos(response.data);
   };
 
+  const onClickButton = (e: React.MouseEvent<HTMLDivElement>) => {
+    const element = e.target as HTMLButtonElement;
+
+    if (element.className === 'previous') {
+      if (photoIdx === 0) {
+        setPhotoIdx(photos.length - 1);
+      } else {
+        setPhotoIdx(photoIdx - 1);
+      }
+    } else if (element.className === 'next') {
+      if (photoIdx === photos.length - 1) {
+        setPhotoIdx(0);
+      } else {
+        setPhotoIdx(photoIdx + 1);
+      }
+    }
+  };
+
   useEffect(() => {
     getPhotos();
   }, []);
 
   return (
-    <SlideWrapper photo={photos[photoIdx]}>
+    <SlideWrapper $photo={photos[photoIdx]} onClick={onClickButton}>
       <div>
-        <button>◄</button>
+        <button className='previous'>◄</button>
       </div>
       <div>
-        <button>►</button>
+        <button className='next'>►</button>
       </div>
     </SlideWrapper>
   );

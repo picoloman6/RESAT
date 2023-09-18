@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-export const MiddleBarWrapper = styled.div<{ scrollpos: number }>`
+export const MiddleBarWrapper = styled.div<{ $scrollpos: number }>`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -9,7 +9,7 @@ export const MiddleBarWrapper = styled.div<{ scrollpos: number }>`
   width: 100%;
   height: 60px;
   box-shadow: ${props =>
-    props.scrollpos > 290 ? '0 8px 8px -6px gray' : 'none'};
+    props.$scrollpos > 290 ? '0 8px 8px -6px gray' : 'none'};
   background: white;
   > div:first-child {
     display: flex;
@@ -27,7 +27,7 @@ export const MiddleBarWrapper = styled.div<{ scrollpos: number }>`
 `;
 
 export const MiddleBarSelectBox = styled.div<{
-  modal: string;
+  $modal?: string;
   type: string;
   width: number;
 }>`
@@ -47,7 +47,7 @@ export const MiddleBarSelectBox = styled.div<{
   }
 
   > ul {
-    display: ${props => (props.modal === props.type ? 'block' : 'none')};
+    display: ${props => (props.$modal === props.type ? 'block' : 'none')};
     position: absolute;
     width: ${props => props.width}px;
     background: white;

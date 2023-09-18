@@ -31,12 +31,12 @@ const MiddleBar: React.FC<PropsType> = ({ scrollpos }) => {
   };
 
   return (
-    <MiddleBarWrapper scrollpos={scrollpos}>
+    <MiddleBarWrapper $scrollpos={scrollpos}>
       <div>
         <MiddleBarSelectBox
           onClick={() => onClickBox('progress')}
           type={'progress'}
-          modal={modal}
+          $modal={modal}
           width={80}>
           <div>
             <span>전체</span>
@@ -51,7 +51,7 @@ const MiddleBar: React.FC<PropsType> = ({ scrollpos }) => {
         <MiddleBarSelectBox
           onClick={() => onClickBox('category')}
           type={'category'}
-          modal={modal}
+          $modal={modal}
           width={130}>
           <div>
             <span>분야</span>
