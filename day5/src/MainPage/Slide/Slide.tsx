@@ -44,7 +44,7 @@ const Slide = () => {
     const inverval = setInterval(() => {
       const nextIdx = photoIdx + 1 === photos.length ? 0 : photoIdx + 1;
       setPhotoIdx(nextIdx);
-    }, 3000);
+    }, 2000);
 
     return () => {
       clearInterval(inverval);

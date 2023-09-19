@@ -2001,5 +2001,11 @@
       "text": "Donec at arcu. Vestibulum ante ipsum primis in faucibus orci"
     }
   ],
-  "photos": ["./tree.jpg", "./polar_bear.jpg", "./karina.jpg"]
+  "photos": [
+    "./tree.jpg",
+    "./polar_bear.jpg",
+    "./karina.jpg",
+    "./burgerking.png",
+    "./messi.jpg"
+  ]
 }
