@@ -1,7 +1,12 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 
-import { SlideWrapper } from './Slide.style';
+import {
+  SlideWrapper,
+  ImageWrapper,
+  DotWrapper,
+  StyledDot
+} from './Slide.style';
 
 const Slide = () => {
   const [photos, setPhotos] = useState<string[]>([]);
@@ -34,12 +39,30 @@ const Slide = () => {
     getPhotos();
   }, []);
 
+  useEffect(() => {
+    const inverval = setInterval(() => {
+      const nextIdx = photoIdx + 1 === photos.length ? 0 : photoIdx + 1;
+      setPhotoIdx(nextIdx);
+    }, 3000);
+
+    return () => {
+      clearInterval(inverval);
+    };
+  }, [photoIdx, photos.length]);
+
   return (
-    <SlideWrapper $photo={photos[photoIdx]} onClick={onClickButton}>
-      <div>
+    <SlideWrapper onClick={onClickButton}>
+      <div className='slide-button'>
         <button className='previous'>◄</button>
       </div>
-      <div>
+      <div className='slide-image'>
+        <ImageWrapper $photo={photos[photoIdx]}></ImageWrapper>
+        <DotWrapper>
+          {photos &&
+            photos.map((_, i) => <StyledDot $checked={i === photoIdx} />)}
+        </DotWrapper>
+      </div>
+      <div className='slide-button'>
         <button className='next'>►</button>
       </div>
     </SlideWrapper>
