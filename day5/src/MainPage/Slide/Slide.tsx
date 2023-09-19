@@ -4,6 +4,7 @@ import axios from 'axios';
 import {
   SlideWrapper,
   ImageWrapper,
+  SlideButtonWrapper,
   DotWrapper,
   StyledDot
 } from './Slide.style';
@@ -52,19 +53,21 @@ const Slide = () => {
 
   return (
     <SlideWrapper onClick={onClickButton}>
-      <div className='slide-button'>
+      <SlideButtonWrapper>
         <button className='previous'>◄</button>
-      </div>
+      </SlideButtonWrapper>
       <div className='slide-image'>
         <ImageWrapper $photo={photos[photoIdx]}></ImageWrapper>
         <DotWrapper>
           {photos &&
-            photos.map((_, i) => <StyledDot $checked={i === photoIdx} />)}
+            photos.map((_, i) => (
+              <StyledDot key={i} $checked={i === photoIdx} />
+            ))}
         </DotWrapper>
       </div>
-      <div className='slide-button'>
+      <SlideButtonWrapper>
         <button className='next'>►</button>
-      </div>
+      </SlideButtonWrapper>
     </SlideWrapper>
   );
 };

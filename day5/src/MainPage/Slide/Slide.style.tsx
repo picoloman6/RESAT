@@ -10,18 +10,22 @@ export const SlideWrapper = styled.div`
   border-bottom: 1px solid rgba(160, 160, 160);
   background: none;
 
-  > .slide-button {
-    display: flex;
-    align-items: center;
-    width: 8%;
+  > .slide-image {
+    width: 84%;
     height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+`;
 
-  > .slide-button:last-child {
-    justify-content: flex-end;
-  }
+export const SlideButtonWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  width: 8%;
+  height: 100%;
 
-  > .slide-button > button {
+  > button {
     display: none;
     background: none;
     border: none;
@@ -29,18 +33,10 @@ export const SlideWrapper = styled.div`
     cursor: pointer;
   }
 
-  > .slide-button:hover {
+  &:hover {
     > button {
       display: flex;
     }
-  }
-
-  > .slide-image {
-    width: 84%;
-    height: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
   }
 `;
 
