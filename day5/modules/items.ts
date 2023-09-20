@@ -13,7 +13,7 @@ const initialState = {
   items: []
 };
 
-function itemState(
+function itemReducer(
   state: ItemState = initialState,
   action: ItemAction
 ): ItemState {
@@ -25,4 +25,4 @@ function itemState(
   }
 }
 
-export default itemState;
+export default itemReducer;
