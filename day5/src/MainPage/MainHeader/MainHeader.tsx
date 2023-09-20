@@ -23,9 +23,7 @@ const MainHeader = () => {
         <span>기업회원</span>
       </MainHeaderAccount>
       <MainHeaderHamburger>
-        <span></span>
-        <span></span>
-        <span></span>
+        <img src='./hamburger_button.png' alt='버튼' />
       </MainHeaderHamburger>
     </MainHeaderWrapper>
   );

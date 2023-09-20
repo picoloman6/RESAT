@@ -56,10 +56,17 @@ export const MainHeaderAccount = styled.div`
 
 export const MainHeaderHamburger = styled.div`
   display: flex;
+  flex-direction: column;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+
+  > img {
+    width: 100%;
+    height: 100%;
+  }
+
   @media all and (min-width: 1410px) {
     display: none;
-  }
-  > span {
-    border: 1px solid black;
   }
 `;
