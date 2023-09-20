@@ -1,17 +1,19 @@
 import { useState, useEffect, useCallback } from 'react';
+import { useDispatch } from 'react-redux';
 import axios from 'axios';
 
 import MainHeader from './MainHeader/MainHeader';
 import Slide from './Slide/Slide';
 import MiddleBar from './MiddleBar/MiddleBar';
 import MainBody from './MainBody/MainBody';
+import { setItems } from '../modules/items';
 import { MainPageWrapper } from './MainPage.style';
 
 const MainPage = () => {
   const [page, setPage] = useState<number>(1);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [scrollpos, setScrollpos] = useState<number>(0);
-  const [data, setData] = useState<object[]>([]);
+  const dispatch = useDispatch();
 
   const updateScroll = () => {
     setScrollpos(window.scrollY);
@@ -27,16 +29,15 @@ const MainPage = () => {
 
   const getData = useCallback(async () => {
     const response = await axios.get(
-      `http://localhost:3001/data?_page=${page}`
+      `http://localhost:3001/items?_page=${page}`
     );
 
     try {
-      const newData = [...data, ...response.data];
-      setData(newData);
+      dispatch(setItems(response.data));
     } catch (e) {
       console.log(e);
     }
-  }, [data, page]);
+  }, [dispatch, page]);
 
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
@@ -53,14 +54,14 @@ const MainPage = () => {
       getData();
       setIsFetching(false);
     }
-  }, [isFetching]);
+  }, [isFetching, getData]);
 
   return (
     <MainPageWrapper>
       <MainHeader />
       <Slide />
       <MiddleBar scrollpos={scrollpos} />
-      <MainBody data={data} />
+      <MainBody />
     </MainPageWrapper>
   );
 };

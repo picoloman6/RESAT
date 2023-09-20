@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { useSelector } from 'react-redux';
 
+import { RootState } from '../../modules';
 import { MainBodyWrapper, ItemComponentWrapper } from './MainBody.style';
 
 interface ItemProps {
@@ -7,10 +9,6 @@ interface ItemProps {
     name?: string;
     text?: string;
   };
-}
-
-interface MainPropsType {
-  data: object[];
 }
 
 const ItemComponent: React.FC<ItemProps> = ({ item }) => {
@@ -30,11 +28,13 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
   );
 };
 
-const MainBody: React.FC<MainPropsType> = ({ data }) => {
+const MainBody = () => {
+  const items = useSelector((state: RootState) => state.itemReducer.items);
+
   return (
     <MainBodyWrapper>
-      {data.length !== 0 &&
-        data.map((item, i) => <ItemComponent key={i} item={item} />)}
+      {items.length !== 0 &&
+        items.map((item, i) => <ItemComponent key={i} item={item} />)}
     </MainBodyWrapper>
   );
 };
