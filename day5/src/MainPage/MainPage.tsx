@@ -24,8 +24,8 @@ const MainPage = () => {
   const handleScroll = () => {
     const { scrollTop, offsetHeight } = document.documentElement;
     if (window.innerHeight + scrollTop >= offsetHeight) {
-      setPage(page + 1);
-      setIsFetching(true);
+      setPage(prev => prev + 1);
+      setIsFetching(() => true);
     }
   };
 
@@ -59,7 +59,7 @@ const MainPage = () => {
   useEffect(() => {
     if (isFetching) {
       getItemsData(page);
-      setIsFetching(false);
+      setIsFetching(() => false);
     }
   }, [isFetching, getItemsData, page]);
 
