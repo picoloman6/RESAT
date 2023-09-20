@@ -3,7 +3,7 @@ import styled from 'styled-components';
 export const MainBodyWrapper = styled.div`
   display: flex;
   flex-wrap: wrap;
-  justify-content: flex-start;
+  justify-content: center;
   gap: 20px;
   margin: 0 auto;
   width: 95%;
