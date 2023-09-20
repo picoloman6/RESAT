@@ -6,7 +6,7 @@ import MainHeader from './MainHeader/MainHeader';
 import Slide from './Slide/Slide';
 import MiddleBar from './MiddleBar/MiddleBar';
 import MainBody from './MainBody/MainBody';
-import { setItems } from '../modules/items';
+import { getItems, getPhotos } from '../modules/items';
 import { MainPageWrapper } from './MainPage.style';
 
 const MainPage = () => {
@@ -33,16 +33,27 @@ const MainPage = () => {
     );
 
     try {
-      dispatch(setItems(response.data));
+      dispatch(getItems(response.data));
     } catch (e) {
       console.log(e);
     }
   }, [dispatch, page]);
 
+  const getData2 = useCallback(async () => {
+    const response = await axios.get(`http://localhost:3001/photos`);
+
+    try {
+      dispatch(getPhotos(response.data));
+    } catch (e) {
+      console.log(e);
+    }
+  }, [dispatch]);
+
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
     window.addEventListener('scroll', handleScroll);
     getData();
+    getData2();
     return () => {
       window.removeEventListener('scroll', updateScroll);
       window.removeEventListener('scroll', handleScroll);

@@ -1,16 +1,23 @@
-const SET_ITEMS = 'items/SET_ITEMS' as const;
+const GET_ITEMS = 'items/GET_ITEMS' as const;
+const GET_PHOTOS = 'items/GET_PHOTOS' as const;
 
-export const setItems = (newItems: object[]) => ({
-  type: SET_ITEMS,
+export const getItems = (newItems: object[]) => ({
+  type: GET_ITEMS,
   payload: newItems
 });
 
-type ItemAction = ReturnType<typeof setItems>;
+export const getPhotos = (photos: string[]) => ({
+  type: GET_PHOTOS,
+  payload: photos
+});
 
-type ItemState = { items: object[] };
+type ItemAction = ReturnType<typeof getItems> | ReturnType<typeof getPhotos>;
+
+type ItemState = { items: object[]; photos: string[] };
 
 const initialState = {
-  items: []
+  items: [],
+  photos: []
 };
 
 function itemReducer(
@@ -18,8 +25,16 @@ function itemReducer(
   action: ItemAction
 ): ItemState {
   switch (action.type) {
-    case 'items/SET_ITEMS':
-      return { items: [...state.items, ...action.payload] };
+    case 'items/GET_ITEMS':
+      return {
+        items: [...state.items, ...action.payload],
+        photos: state.photos
+      };
+    case 'items/GET_PHOTOS':
+      return {
+        items: state.items,
+        photos: action.payload
+      };
     default:
       return state;
   }

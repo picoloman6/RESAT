@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 
+import { RootState } from '../../modules';
 import {
   SlideWrapper,
   ImageWrapper,
@@ -10,13 +11,8 @@ import {
 } from './Slide.style';
 
 const Slide = () => {
-  const [photos, setPhotos] = useState<string[]>([]);
   const [photoIdx, setPhotoIdx] = useState<number>(0);
-
-  const getPhotos = async () => {
-    const response = await axios.get(`http://localhost:3001/photos`);
-    setPhotos(response.data);
-  };
+  const photos = useSelector((state: RootState) => state.itemReducer.photos);
 
   const onClickButton = (e: React.MouseEvent<HTMLDivElement>) => {
     const element = e.target as HTMLButtonElement;
@@ -35,10 +31,6 @@ const Slide = () => {
       }
     }
   };
-
-  useEffect(() => {
-    getPhotos();
-  }, []);
 
   useEffect(() => {
     const inverval = setInterval(() => {
