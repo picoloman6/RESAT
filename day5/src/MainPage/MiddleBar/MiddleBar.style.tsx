@@ -7,6 +7,8 @@ export const MiddleBarWrapper = styled.div<{ $scrollpos: number }>`
   position: sticky;
   top: 51px;
   width: 100%;
+  max-width: 945.8px;
+  min-width: 600px;
   height: 60px;
   box-shadow: ${props =>
     props.$scrollpos > 290 ? '0 8px 8px -6px gray' : 'none'};

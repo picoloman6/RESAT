@@ -6,7 +6,6 @@ export const SlideWrapper = styled.div`
   align-items: center;
   width: 100%;
   height: 300px;
-  margin-top: 50px;
   border-bottom: 1px solid rgba(160, 160, 160);
   background: none;
 

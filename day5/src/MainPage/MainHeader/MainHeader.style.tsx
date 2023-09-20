@@ -4,13 +4,10 @@ export const MainHeaderWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
+  position: sticky;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
-  width: inherit;
-  min-width: 780px;
 
+  width: 100%;
   height: 50px;
   border-bottom: 1px solid #e9e9e9;
   background: white;
