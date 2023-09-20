@@ -29,6 +29,10 @@ export const MainHeaderMenu = styled.div`
   justify-content: space-between;
   width: 40%;
   font-size: 13px;
+
+  @media all and (max-width: 1410px) {
+    display: none;
+  }
 `;
 
 export const MainHeaderAccount = styled.div`
@@ -43,5 +47,19 @@ export const MainHeaderAccount = styled.div`
 
   > span:first-child {
     color: black;
+  }
+
+  @media all and (max-width: 1410px) {
+    display: none;
+  }
+`;
+
+export const MainHeaderHamburger = styled.div`
+  display: flex;
+  @media all and (min-width: 1410px) {
+    display: none;
+  }
+  > span {
+    border: 1px solid black;
   }
 `;

@@ -1,7 +1,8 @@
 import {
   MainHeaderWrapper,
   MainHeaderMenu,
-  MainHeaderAccount
+  MainHeaderAccount,
+  MainHeaderHamburger
 } from './MainHeader.style';
 
 const MainHeader = () => {
@@ -21,6 +22,11 @@ const MainHeader = () => {
         <span>로그인</span>
         <span>기업회원</span>
       </MainHeaderAccount>
+      <MainHeaderHamburger>
+        <span></span>
+        <span></span>
+        <span></span>
+      </MainHeaderHamburger>
     </MainHeaderWrapper>
   );
 };
