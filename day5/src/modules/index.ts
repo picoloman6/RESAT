@@ -1,8 +1,11 @@
 import { combineReducers } from 'redux';
+
 import itemReducer from './items';
+import photoReducer from './photos';
 
 const rootReducer = combineReducers({
-  itemReducer
+  itemReducer,
+  photoReducer
 });
 
 export default rootReducer;

@@ -6,7 +6,8 @@ import MainHeader from './MainHeader/MainHeader';
 import Slide from './Slide/Slide';
 import MiddleBar from './MiddleBar/MiddleBar';
 import MainBody from './MainBody/MainBody';
-import { getItems, getPhotos } from '../modules/items';
+import { getItems } from '../modules/items';
+import { getPhotos } from '../modules/photos';
 import { MainPageWrapper } from './MainPage.style';
 
 const MainPage = () => {

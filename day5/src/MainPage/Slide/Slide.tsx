@@ -12,7 +12,7 @@ import {
 
 const Slide = () => {
   const [photoIdx, setPhotoIdx] = useState<number>(0);
-  const photos = useSelector((state: RootState) => state.itemReducer.photos);
+  const photos = useSelector((state: RootState) => state.photoReducer.photos);
 
   const onClickButton = (e: React.MouseEvent<HTMLDivElement>) => {
     const element = e.target as HTMLButtonElement;
