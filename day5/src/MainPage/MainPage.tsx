@@ -1,12 +1,13 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useDispatch } from 'react-redux';
+import { ThunkDispatch } from '@reduxjs/toolkit';
 import axios from 'axios';
 
 import MainHeader from './MainHeader/MainHeader';
 import Slide from './Slide/Slide';
 import MiddleBar from './MiddleBar/MiddleBar';
 import MainBody from './MainBody/MainBody';
-import { getItems } from '../modules/items';
+import { getItemsThunk } from '../modules/items';
 import { getPhotos } from '../modules/photos';
 import { MainPageWrapper } from './MainPage.style';
 
@@ -14,7 +15,7 @@ const MainPage = () => {
   const [page, setPage] = useState<number>(1);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [scrollpos, setScrollpos] = useState<number>(0);
-  const dispatch = useDispatch();
+  const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const updateScroll = () => {
     setScrollpos(window.scrollY);
@@ -28,21 +29,15 @@ const MainPage = () => {
     }
   };
 
-  const getData = useCallback(async () => {
-    const response = await axios.get(
-      `http://localhost:3001/items?_page=${page}`
-    );
+  const getItemsData = useCallback(
+    (page: number) => {
+      dispatch(getItemsThunk(page));
+    },
+    [dispatch]
+  );
 
-    try {
-      dispatch(getItems(response.data));
-    } catch (e) {
-      console.log(e);
-    }
-  }, [dispatch, page]);
-
-  const getData2 = useCallback(async () => {
+  const getPhotsData = useCallback(async () => {
     const response = await axios.get(`http://localhost:3001/photos`);
-
     try {
       dispatch(getPhotos(response.data));
     } catch (e) {
@@ -53,8 +48,8 @@ const MainPage = () => {
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
     window.addEventListener('scroll', handleScroll);
-    getData();
-    getData2();
+    getItemsData(page);
+    getPhotsData();
     return () => {
       window.removeEventListener('scroll', updateScroll);
       window.removeEventListener('scroll', handleScroll);
@@ -63,10 +58,10 @@ const MainPage = () => {
 
   useEffect(() => {
     if (isFetching) {
-      getData();
+      getItemsData(page);
       setIsFetching(false);
     }
-  }, [isFetching, getData]);
+  }, [isFetching, getItemsData, page]);
 
   return (
     <MainPageWrapper>

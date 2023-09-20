@@ -9,7 +9,8 @@ const MainBody = () => {
 
   return (
     <MainBodyWrapper>
-      {items.length !== 0 &&
+      {items &&
+        items.length !== 0 &&
         items.map((item, i) => <ItemComponent key={i} item={item} />)}
     </MainBodyWrapper>
   );
