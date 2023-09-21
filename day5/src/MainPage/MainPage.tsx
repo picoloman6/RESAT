@@ -38,7 +38,7 @@ const MainPage = () => {
     [dispatch]
   );
 
-  const getPhotsData = useCallback(async () => {
+  const getPhotosData = useCallback(async () => {
     const response = await axios.get(`http://localhost:3001/photos`);
     try {
       dispatch(getPhotos(response.data));
@@ -47,11 +47,17 @@ const MainPage = () => {
     }
   }, [dispatch]);
 
+  const onClickModalButton = () => {
+    setModal(() => false);
+    const body = document.body;
+    body.style.overflow = 'visible';
+  };
+
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
     window.addEventListener('scroll', handleScroll);
     getItemsData(page);
-    getPhotsData();
+    getPhotosData();
     return () => {
       window.removeEventListener('scroll', updateScroll);
       window.removeEventListener('scroll', handleScroll);
@@ -67,7 +73,23 @@ const MainPage = () => {
 
   return (
     <MainPageWrapper>
-      {modal && <ModalWrapper />}
+      {modal && (
+        <ModalWrapper>
+          <div>
+            <div>
+              <span>여기</span>
+              <button onClick={onClickModalButton}>x</button>
+            </div>
+            <div>
+              <span>미니인턴</span>
+              <span>스킬업</span>
+              <span>M클래스</span>
+              <span>채용관</span>
+              <span>해피폴리오</span>
+            </div>
+          </div>
+        </ModalWrapper>
+      )}
       <MainHeader setModal={setModal} />
       <Slide />
       <MiddleBar scrollpos={scrollpos} />
