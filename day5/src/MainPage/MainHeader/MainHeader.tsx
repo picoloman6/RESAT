@@ -13,7 +13,7 @@ interface PropsType {
 
 const MainHeader: React.FC<PropsType> = ({ setModal }) => {
   const onClickButton = () => {
-    setModal(prev => !prev);
+    setModal(() => true);
     const body = document.body;
     body.style.overflow = 'hidden';
   };

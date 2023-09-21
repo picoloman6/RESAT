@@ -8,17 +8,18 @@ export const MainPageWrapper = styled.div`
 `;
 
 export const ModalWrapper = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  position: absolute;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
-  height: 100vh;
+  height: 100%;
   background-color: rgba(0, 0, 0, 0.5);
   z-index: 100;
 
   > div {
+    position: absolute;
+    top: 0;
+    right: 0;
     width: 240px;
     height: 100%;
     background: white;
