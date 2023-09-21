@@ -10,11 +10,13 @@ import MainBody from './MainBody/MainBody';
 import { getItemsThunk } from '../modules/items';
 import { getPhotos } from '../modules/photos';
 import { MainPageWrapper } from './MainPage.style';
+import { ModalWrapper } from './MainPage.style';
 
 const MainPage = () => {
   const [page, setPage] = useState<number>(1);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [scrollpos, setScrollpos] = useState<number>(0);
+  const [modal, setModal] = useState<boolean>(false);
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const updateScroll = () => {
@@ -65,7 +67,8 @@ const MainPage = () => {
 
   return (
     <MainPageWrapper>
-      <MainHeader />
+      {modal && <ModalWrapper />}
+      <MainHeader setModal={setModal} />
       <Slide />
       <MiddleBar scrollpos={scrollpos} />
       <MainBody />

@@ -1,3 +1,5 @@
+import React from 'react';
+
 import {
   MainHeaderWrapper,
   MainHeaderMenu,
@@ -5,7 +7,17 @@ import {
   MainHeaderHamburger
 } from './MainHeader.style';
 
-const MainHeader = () => {
+interface PropsType {
+  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+}
+
+const MainHeader: React.FC<PropsType> = ({ setModal }) => {
+  const onClickButton = () => {
+    setModal(prev => !prev);
+    const body = document.body;
+    body.style.overflow = 'hidden';
+  };
+
   return (
     <MainHeaderWrapper>
       <span>LOGO</span>
@@ -22,8 +34,8 @@ const MainHeader = () => {
         <span>로그인</span>
         <span>기업회원</span>
       </MainHeaderAccount>
-      <MainHeaderHamburger>
-        <img src='./hamburger_button.png' alt='버튼' />
+      <MainHeaderHamburger onClick={onClickButton}>
+        <img src='hamburger_button.png' alt='버튼' />
       </MainHeaderHamburger>
     </MainHeaderWrapper>
   );
