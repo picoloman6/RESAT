@@ -77,7 +77,7 @@ const MainPage = () => {
         <ModalWrapper>
           <div>
             <div>
-              <span>여기</span>
+              <span>LOGO</span>
               <button onClick={onClickModalButton}>x</button>
             </div>
             <div>
