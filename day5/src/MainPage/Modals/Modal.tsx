@@ -5,14 +5,15 @@ import LoginModal from './LoginModal';
 import { ModalWrapper } from './Modal.style';
 
 interface PropsType {
+  modal: string;
   setModal: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const Modal: React.FC<PropsType> = ({ setModal }) => {
+const Modal: React.FC<PropsType> = ({ modal, setModal }) => {
   return (
     <ModalWrapper>
-      {/* <SideBarModal setModal={setModal} /> */}
-      <LoginModal />
+      {modal === 'sideBar' && <SideBarModal setModal={setModal} />}
+      {modal === 'login' && <LoginModal />}
     </ModalWrapper>
   );
 };

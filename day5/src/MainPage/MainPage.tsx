@@ -78,7 +78,7 @@ const MainPage = () => {
 
   return (
     <MainPageWrapper>
-      {modal !== 'none' && <Modal setModal={setModal} />}
+      {modal !== 'none' && <Modal modal={modal} setModal={setModal} />}
       <MainHeader setModal={setModal} />
       <Slide />
       <MiddleBar scrollpos={scrollpos} />
