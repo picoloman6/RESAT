@@ -7,7 +7,7 @@ import MainHeader from './MainHeader/MainHeader';
 import Slide from './Slide/Slide';
 import MiddleBar from './MiddleBar/MiddleBar';
 import MainBody from './MainBody/MainBody';
-import SideBarModal from './Modals/SidebarModal';
+import Modal from './Modals/Modal';
 import { getItemsThunk } from '../modules/items';
 import { getPhotos } from '../modules/photos';
 import { MainPageWrapper } from './MainPage.style';
@@ -67,7 +67,7 @@ const MainPage = () => {
 
   return (
     <MainPageWrapper>
-      {modal === 'sideBar' && <SideBarModal setModal={setModal} />}
+      {modal !== 'none' && <Modal setModal={setModal} />}
       <MainHeader setModal={setModal} />
       <Slide />
       <MiddleBar scrollpos={scrollpos} />

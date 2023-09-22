@@ -1,7 +1,6 @@
 import React from 'react';
 
 import {
-  ModalWrapper,
   SideBarModalWrapper,
   SideBarModalHeader,
   SideBarModalBody
@@ -19,21 +18,19 @@ const SideBarModal: React.FC<PropsType> = ({ setModal }) => {
   };
 
   return (
-    <ModalWrapper>
-      <SideBarModalWrapper>
-        <SideBarModalHeader>
-          <span>LOGO</span>
-          <button onClick={onClickModalButton}>x</button>
-        </SideBarModalHeader>
-        <SideBarModalBody>
-          <span>미니인턴</span>
-          <span>스킬업</span>
-          <span>M클래스</span>
-          <span>채용관</span>
-          <span>해피폴리오</span>
-        </SideBarModalBody>
-      </SideBarModalWrapper>
-    </ModalWrapper>
+    <SideBarModalWrapper>
+      <SideBarModalHeader>
+        <span>LOGO</span>
+        <button onClick={onClickModalButton}>x</button>
+      </SideBarModalHeader>
+      <SideBarModalBody>
+        <span>미니인턴</span>
+        <span>스킬업</span>
+        <span>M클래스</span>
+        <span>채용관</span>
+        <span>해피폴리오</span>
+      </SideBarModalBody>
+    </SideBarModalWrapper>
   );
 };
 
