@@ -8,12 +8,12 @@ import {
 } from './MainHeader.style';
 
 interface PropsType {
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setModal: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const MainHeader: React.FC<PropsType> = ({ setModal }) => {
   const onClickButton = () => {
-    setModal(() => true);
+    setModal(() => 'sideBar');
     const body = document.body;
     body.style.overflow = 'hidden';
   };

@@ -16,7 +16,7 @@ const MainPage = () => {
   const [page, setPage] = useState<number>(1);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [scrollpos, setScrollpos] = useState<number>(0);
-  const [modal, setModal] = useState<boolean>(false);
+  const [modal, setModal] = useState<string>('none');
   const dispatch = useDispatch<ThunkDispatch<any, any, any>>();
 
   const updateScroll = () => {
@@ -67,7 +67,7 @@ const MainPage = () => {
 
   return (
     <MainPageWrapper>
-      {modal && <SideBarModal setModal={setModal} />}
+      {modal === 'sideBar' && <SideBarModal setModal={setModal} />}
       <MainHeader setModal={setModal} />
       <Slide />
       <MiddleBar scrollpos={scrollpos} />

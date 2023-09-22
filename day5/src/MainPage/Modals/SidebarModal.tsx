@@ -8,12 +8,12 @@ import {
 } from './Modal.style';
 
 interface PropsType {
-  setModal: React.Dispatch<React.SetStateAction<boolean>>;
+  setModal: React.Dispatch<React.SetStateAction<string>>;
 }
 
 const SideBarModal: React.FC<PropsType> = ({ setModal }) => {
   const onClickModalButton = () => {
-    setModal(() => false);
+    setModal(() => 'none');
     const body = document.body;
     body.style.overflow = 'visible';
   };
