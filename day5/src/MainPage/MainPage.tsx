@@ -31,6 +31,15 @@ const MainPage = () => {
     }
   };
 
+  const globalKeyEvent = (e: KeyboardEvent) => {
+    if (e.key === 'Escape' && modal !== 'none') {
+      console.log('여기');
+      setModal('none');
+      const body = document.body;
+      body.style.overflow = 'visible';
+    }
+  };
+
   const getItemsData = useCallback(
     (page: number) => {
       dispatch(getItemsThunk(page));
@@ -50,11 +59,13 @@ const MainPage = () => {
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
     window.addEventListener('scroll', handleScroll);
+    window.addEventListener('keydown', globalKeyEvent);
     getItemsData(page);
     getPhotosData();
     return () => {
       window.removeEventListener('scroll', updateScroll);
       window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('keydown', globalKeyEvent);
     };
   }, []);
 
