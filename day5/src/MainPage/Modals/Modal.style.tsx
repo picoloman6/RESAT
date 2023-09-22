@@ -44,9 +44,58 @@ export const SideBarModalBody = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  margin: 0 auto;
 
   > span {
     margin-bottom: 10px;
+    cursor: pointer;
+  }
+`;
+
+export const LoginModalWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  width: 300px;
+  height: 300px;
+
+  background: white;
+`;
+
+export const LoginModalInput = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 30%;
+
+  > span {
+    font-size: 12px;
+    color: #808080;
+  }
+`;
+
+export const LoginModalButton = styled.div`
+  height: 25%;
+  display: flex;
+  align-items: center;
+
+  > button {
+    width: 70px;
+    height: 35px;
+
+    background: black;
+    color: white;
+    font-size: 18px;
+
+    border: none;
+
     cursor: pointer;
   }
 `;

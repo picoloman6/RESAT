@@ -1,6 +1,7 @@
 import React from 'react';
 
 import SideBarModal from './SideBarModal';
+import LoginModal from './LoginModal';
 import { ModalWrapper } from './Modal.style';
 
 interface PropsType {
@@ -10,7 +11,8 @@ interface PropsType {
 const Modal: React.FC<PropsType> = ({ setModal }) => {
   return (
     <ModalWrapper>
-      <SideBarModal setModal={setModal} />
+      {/* <SideBarModal setModal={setModal} /> */}
+      <LoginModal />
     </ModalWrapper>
   );
 };
