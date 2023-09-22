@@ -7,10 +7,10 @@ import MainHeader from './MainHeader/MainHeader';
 import Slide from './Slide/Slide';
 import MiddleBar from './MiddleBar/MiddleBar';
 import MainBody from './MainBody/MainBody';
+import SideBarModal from './Modals/SidebarModal';
 import { getItemsThunk } from '../modules/items';
 import { getPhotos } from '../modules/photos';
 import { MainPageWrapper } from './MainPage.style';
-import { ModalWrapper } from './MainPage.style';
 
 const MainPage = () => {
   const [page, setPage] = useState<number>(1);
@@ -47,12 +47,6 @@ const MainPage = () => {
     }
   }, [dispatch]);
 
-  const onClickModalButton = () => {
-    setModal(() => false);
-    const body = document.body;
-    body.style.overflow = 'visible';
-  };
-
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
     window.addEventListener('scroll', handleScroll);
@@ -73,23 +67,7 @@ const MainPage = () => {
 
   return (
     <MainPageWrapper>
-      {modal && (
-        <ModalWrapper>
-          <div>
-            <div>
-              <span>LOGO</span>
-              <button onClick={onClickModalButton}>x</button>
-            </div>
-            <div>
-              <span>미니인턴</span>
-              <span>스킬업</span>
-              <span>M클래스</span>
-              <span>채용관</span>
-              <span>해피폴리오</span>
-            </div>
-          </div>
-        </ModalWrapper>
-      )}
+      {modal && <SideBarModal setModal={setModal} />}
       <MainHeader setModal={setModal} />
       <Slide />
       <MiddleBar scrollpos={scrollpos} />
