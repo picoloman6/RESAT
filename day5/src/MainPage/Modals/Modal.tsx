@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useCallback } from 'react';
 
 import SideBarModal from './SideBarModal';
 import LoginModal from './LoginModal';
@@ -10,10 +10,28 @@ interface PropsType {
 }
 
 const Modal: React.FC<PropsType> = ({ modal, setModal }) => {
+  const globalModalEvent = useCallback(
+    (e: KeyboardEvent) => {
+      if (e.key === 'Escape' && modal !== 'none') {
+        setModal('none');
+        const body = document.body;
+        body.style.overflow = 'visible';
+      }
+    },
+    [modal, setModal]
+  );
+
+  useEffect(() => {
+    window.addEventListener('keydown', globalModalEvent);
+    return () => {
+      window.removeEventListener('keydown', globalModalEvent);
+    };
+  }, [globalModalEvent]);
+
   return (
     <ModalWrapper>
       {modal === 'sideBar' && <SideBarModal setModal={setModal} />}
-      {modal === 'login' && <LoginModal />}
+      {modal === 'login' && <LoginModal setModal={setModal} />}
     </ModalWrapper>
   );
 };

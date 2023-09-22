@@ -50,6 +50,10 @@ export const SideBarModalBody = styled.div`
     margin-bottom: 10px;
     cursor: pointer;
   }
+
+  > span:first-child {
+    color: blue;
+  }
 `;
 
 export const LoginModalWrapper = styled.div`
@@ -69,7 +73,7 @@ export const LoginModalWrapper = styled.div`
   background: white;
 `;
 
-export const LoginModalInput = styled.div`
+export const LoginModalInput = styled.div<{ $error?: boolean }>`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -78,6 +82,10 @@ export const LoginModalInput = styled.div`
   > span {
     font-size: 12px;
     color: #808080;
+  }
+
+  > span:last-child {
+    color: ${props => (props.$error ? 'red' : 'white')};
   }
 `;
 
