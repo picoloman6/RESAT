@@ -1,6 +1,11 @@
 import React from 'react';
 
-import { ModalWrapper } from './Modal.style';
+import {
+  ModalWrapper,
+  SideBarModalWrapper,
+  SideBarModalHeader,
+  SideBarModalBody
+} from './Modal.style';
 
 interface PropsType {
   setModal: React.Dispatch<React.SetStateAction<boolean>>;
@@ -15,19 +20,19 @@ const SideBarModal: React.FC<PropsType> = ({ setModal }) => {
 
   return (
     <ModalWrapper>
-      <div>
-        <div>
+      <SideBarModalWrapper>
+        <SideBarModalHeader>
           <span>LOGO</span>
           <button onClick={onClickModalButton}>x</button>
-        </div>
-        <div>
+        </SideBarModalHeader>
+        <SideBarModalBody>
           <span>미니인턴</span>
           <span>스킬업</span>
           <span>M클래스</span>
           <span>채용관</span>
           <span>해피폴리오</span>
-        </div>
-      </div>
+        </SideBarModalBody>
+      </SideBarModalWrapper>
     </ModalWrapper>
   );
 };
