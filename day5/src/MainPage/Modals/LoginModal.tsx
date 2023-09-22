@@ -37,10 +37,14 @@ const LoginModal: React.FC<PropsType> = ({ setModal }) => {
     const newObj = { ...error };
     if (id !== '123') {
       newObj.id = true;
+    } else {
+      newObj.id = false;
     }
 
     if (password !== '123') {
       newObj.password = true;
+    } else {
+      newObj.password = false;
     }
 
     if (id === '123' && password === '123') {
