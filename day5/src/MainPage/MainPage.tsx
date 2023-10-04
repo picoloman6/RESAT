@@ -12,6 +12,15 @@ import { getItemsThunk } from '../modules/items';
 import { getPhotos } from '../modules/photos';
 import { MainPageWrapper } from './MainPage.style';
 
+interface PhotoType {
+  id: string;
+  author: string;
+  width: number;
+  height: number;
+  url: string;
+  download_url: string;
+}
+
 const MainPage = () => {
   const [page, setPage] = useState<number>(2);
   const [isFetching, setIsFetching] = useState<boolean>(false);
@@ -39,9 +48,14 @@ const MainPage = () => {
   );
 
   const getPhotosData = useCallback(async () => {
-    const response = await axios.get(`http://localhost:3001/photos`);
+    const response = await axios.get(
+      `https://picsum.photos/v2/list?page=1&limit=5%E2%80%8B`
+    );
+    const photos = response.data
+      .map((photo: PhotoType) => photo['download_url'])
+      .slice(0, 6);
     try {
-      dispatch(getPhotos(response.data));
+      dispatch(getPhotos(photos));
     } catch (e) {
       console.log(e);
     }

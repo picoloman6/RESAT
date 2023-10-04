@@ -48,15 +48,17 @@ const Slide = () => {
       <SlideButtonWrapper>
         <button className='previous'>◄</button>
       </SlideButtonWrapper>
-      <div className='slide-image'>
-        <ImageWrapper $photo={photos[photoIdx]}></ImageWrapper>
-        <DotWrapper>
-          {photos &&
-            photos.map((_, i) => (
-              <StyledDot key={i} $checked={i === photoIdx} />
-            ))}
-        </DotWrapper>
-      </div>
+      {photos && (
+        <div className='slide-image'>
+          <ImageWrapper $photo={photos[photoIdx]}></ImageWrapper>
+          <DotWrapper>
+            {photos &&
+              photos.map((_, i) => (
+                <StyledDot key={i} $checked={i === photoIdx} />
+              ))}
+          </DotWrapper>
+        </div>
+      )}
       <SlideButtonWrapper>
         <button className='next'>►</button>
       </SlideButtonWrapper>
