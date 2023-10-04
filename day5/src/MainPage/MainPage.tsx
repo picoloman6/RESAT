@@ -13,7 +13,7 @@ import { getPhotos } from '../modules/photos';
 import { MainPageWrapper } from './MainPage.style';
 
 const MainPage = () => {
-  const [page, setPage] = useState<number>(1);
+  const [page, setPage] = useState<number>(2);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   const [scrollpos, setScrollpos] = useState<number>(0);
   const [modal, setModal] = useState<string>('none');
@@ -50,6 +50,7 @@ const MainPage = () => {
   useEffect(() => {
     window.addEventListener('scroll', updateScroll);
     window.addEventListener('scroll', handleScroll);
+    getItemsData(page - 1);
     getItemsData(page);
     getPhotosData();
     return () => {

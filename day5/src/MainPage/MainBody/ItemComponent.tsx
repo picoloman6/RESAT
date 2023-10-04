@@ -5,7 +5,7 @@ import { ItemComponentWrapper } from './MainBody.style';
 interface ItemProps {
   item: {
     name?: string;
-    text?: string;
+    body?: string;
   };
 }
 
@@ -19,7 +19,7 @@ const ItemComponent: React.FC<ItemProps> = ({ item }) => {
           <span>{item.name}</span>
         </div>
         <div>
-          <span>{item.text}</span>
+          <span>{item.body}</span>
         </div>
       </div>
     </ItemComponentWrapper>

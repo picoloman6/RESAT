@@ -28,11 +28,13 @@ export const ItemComponentWrapper = styled.div`
 
     > div:first-child {
       display: flex;
+      height: 20px;
       font-size: 11px;
       margin: 10px 0 0 10px;
+      overflow: hidden;
 
       > span:first-child {
-        width: 20px;
+        width: 15%;
         height: 20px;
         background: black;
         border-radius: 5px;
@@ -43,6 +45,7 @@ export const ItemComponentWrapper = styled.div`
       }
 
       > span:last-child {
+        width: 80%;
         margin-left: 10px;
         color: gray;
       }

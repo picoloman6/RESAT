@@ -2,7 +2,7 @@ import axios from 'axios';
 
 export const getItemsData = async (page: number) => {
   const response = await axios.get<object[]>(
-    `http://localhost:3001/items?_page=${page}`
+    `https://jsonplaceholder.typicode.com/posts/${page}/comments`
   );
   return response.data;
 };
